@@ -1,16 +1,18 @@
-/*//const ESPACIO= " " 
-//let mensaje = "¿Estas listo? ¡Vamos a aprender! :)";
-//alert(mensaje);
-
+/*const ESPACIO= " " 
+let mensaje = "¿Estas listo? ¡Vamos a aprender! :)";
+alert(mensaje);
 let nombreDeUsuario = prompt("Ingresa tu nombre completo");
 let apellidoDeUsario = prompt("Ingresa tu Apellido");
+solicitarNombre ( nombreDeUsuario, apellidoDeUsario)
 
-if((nombreDeUsuario !="")&& (apellidoDeUsario != "")){
-    alert(`Bienvenido al sistema ${nombreDeUsuario} ${apellidoDeUsario}`)
+function solicitarNombre (nombre, apellido) { 
+if((nombre !="")&& (apellido!= "")){
+    alert(`Bienvenido al sistema ${nombre} ${apellido}`);
 }else{
     alert("¡Debe ingresar nombre y apellido para continuar!" );
-
 }
+}
+
 
 
 let  anioNacimiento = parseInt(prompt("Por favor ingresa el año de tu nacimiento"));
@@ -19,7 +21,7 @@ if (anioNacimiento <= 2004){
 }else{
     alert(" Para poder ingresar debes ser mayor de 18 años")
 }
- Primer entrega 
+
 for(let i = 1; i <=3 ; i++){
     let palabra = prompt("Escribe como se dice CASA en ingles").toLocaleLowerCase();
     if ((palabra == "home")){
@@ -164,7 +166,6 @@ for( maquillaje of listaDeProductos){
 }
 
 let elegir = prompt(mensajePantalla)
-
 const productoElegido = listaDeProductos.find((elemento) => elemento.codigo== elegir)
 if(productoElegido != undefined){ 
 alert( `Te vas a llevar ${productoElegido.articulo}  ${productoElegido.descripcion} a $ ${productoElegido.precio} `)
@@ -172,8 +173,14 @@ alert( `Te vas a llevar ${productoElegido.articulo}  ${productoElegido.descripci
     alert(" Por el momento no tenemos ese producto  en stock")
 }
 
+//descuento- Funcion sin parametro con return
+const descuento = function (precio){
+    return precio - ( precio * 0.15 )
+}
+alert("Con el descuento del 15% solo vas a abonar "+descuento(productoElegido.precio));
 
 
+// Seleccionar productos por marca
 let mensajePantallaDos = "Ingresa la marca del producto que deseas. \n";
 for( maquillaje of listaDeProductos){
    mensajePantallaDos += ` Código ${maquillaje.codigo}- ${maquillaje.articulo}: ${maquillaje.descripcion}, Valor $ ${maquillaje.precio} ${maquillaje.marca}   \n `
@@ -181,7 +188,6 @@ for( maquillaje of listaDeProductos){
 let elegirPorMarca = prompt (mensajePantallaDos).toLowerCase();
 
 const buscarPorMarca = listaDeProductos.filter((articulo) => articulo.marca == elegirPorMarca );
-
 let mostrar = "Encontramos de la marca que escogiste:\n" 
     for( const prod of buscarPorMarca){
         mostrar += elegirPorMarca +` ${prod.articulo}  ${prod.precio} \n`
@@ -193,3 +199,5 @@ let mostrar = "Encontramos de la marca que escogiste:\n"
 
     const stock = listaDeProductos.reduce((cantidad,articulo)=>cantidad + articulo.stock, 0)
     console.log("total de productos en stock"+stock) 
+
+    
